@@ -1,0 +1,259 @@
+/* ============================================================
+   سامانه کلید (KEY) — استایل اختصاصی
+   Bootstrap 5 RTL + Vazirmatn + حالت روشن/تاریک
+   ============================================================ */
+
+@import url('active-font.css'); /* فونت‌های نصب‌شده ماژول مدیریت فونت */
+
+:root {
+    --key-primary: #2f5bea;
+    --key-primary-dark: #1e3fae;
+    --key-accent: #f59e0b;
+    --key-success: #16a34a;
+    --key-danger: #dc2626;
+    --key-info: #0891b2;
+    --key-sidebar-bg: #101828;
+    --key-sidebar-active: rgba(47, 91, 234, .25);
+    --key-body-bg: #f4f6fb;
+    --key-card-bg: #ffffff;
+    --key-border: #e4e7ef;
+    --key-text: #1b2437;
+    --key-muted: #6b7590;
+}
+
+[data-bs-theme="dark"] {
+    --key-body-bg: #0b1220;
+    --key-card-bg: #131c2e;
+    --key-border: #26324a;
+    --key-text: #e5eaf5;
+    --key-muted: #8b95ad;
+    --key-sidebar-bg: #0a0f1c;
+    --key-sidebar-active: rgba(78, 115, 246, .35);
+}
+
+body {
+    font-family: var(--key-font-family, 'Vazirmatn'), 'Segoe UI', Tahoma, sans-serif;
+    background: var(--key-body-bg);
+    color: var(--key-text);
+    font-size: .95rem;
+}
+
+/* ---------------- سایدبار ---------------- */
+.key-sidebar {
+    width: 260px;
+    background: var(--key-sidebar-bg);
+    color: #cbd5e1;
+    position: fixed;
+    inset-inline-start: 0;
+    top: 0;
+    bottom: 0;
+    overflow-y: auto;
+    z-index: 1030;
+    transition: width .25s ease, transform .25s ease;
+}
+
+.key-sidebar .brand {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    padding: 1.15rem 1.4rem;
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+
+.key-sidebar .brand .logo {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--key-primary), #7c3aed);
+    display: grid;
+    place-items: center;
+    color: #fff;
+    font-weight: 800;
+    font-size: 1.05rem;
+    box-shadow: 0 4px 14px rgba(47, 91, 234, .45);
+}
+
+.key-sidebar .brand .name { color: #fff; font-weight: 700; font-size: 1.1rem; line-height: 1.1; }
+.key-sidebar .brand .name small { color: #7c86a3; font-weight: 400; font-size: .72rem; }
+
+.key-sidebar .nav-section {
+    font-size: .72rem;
+    color: #667089;
+    padding: 1.1rem 1.4rem .4rem;
+    letter-spacing: .3px;
+}
+
+.key-sidebar a.nav-link {
+    color: #aab3c8;
+    padding: .62rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    font-size: .9rem;
+    border-radius: 10px;
+    margin: 2px 10px;
+}
+
+.key-sidebar a.nav-link i { font-size: 1.05rem; width: 1.2rem; text-align: center; }
+.key-sidebar a.nav-link:hover { background: rgba(255, 255, 255, .06); color: #fff; }
+.key-sidebar a.nav-link.active {
+    background: var(--key-sidebar-active);
+    color: #fff;
+    box-shadow: inset 3px 0 0 var(--key-primary);
+}
+
+/* ---------------- محتوا ---------------- */
+.key-wrapper { margin-inline-start: 260px; transition: margin .25s ease; }
+
+.key-topbar {
+    background: var(--key-card-bg);
+    border-bottom: 1px solid var(--key-border);
+    height: 60px;
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+}
+
+.key-content { padding: 1.5rem; }
+
+@media (max-width: 991.98px) {
+    .key-sidebar { transform: translateX(100%); }
+    [dir="rtl"] .key-sidebar { transform: translateX(100%); }
+    .key-sidebar.show { transform: translateX(0); }
+    .key-wrapper { margin-inline-start: 0; }
+}
+
+/* ---------------- کارت‌ها و اجزا ---------------- */
+.card {
+    background: var(--key-card-bg);
+    border: 1px solid var(--key-border);
+    border-radius: 14px;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, .05);
+}
+
+.card-header {
+    background: transparent;
+    border-bottom: 1px solid var(--key-border);
+    font-weight: 700;
+}
+
+.card-header h5, .card-header h6 { margin: 0; }
+
+.stat-card { position: relative; overflow: hidden; }
+.stat-card .stat-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    font-size: 1.4rem;
+}
+.stat-card .stat-value { font-size: 1.55rem; font-weight: 800; }
+
+.table > :not(caption) > * > * { padding: .7rem .8rem; }
+.table thead th {
+    font-size: .82rem;
+    color: var(--key-muted);
+    font-weight: 600;
+    background: var(--key-body-bg);
+    border-bottom: 1px solid var(--key-border);
+}
+.table tbody tr:hover td { background: rgba(47, 91, 234, .04); }
+
+.badge-soft-primary { background: rgba(47, 91, 234, .12); color: #3b6ef6; }
+.badge-soft-success { background: rgba(22, 163, 74, .12); color: #16a34a; }
+.badge-soft-danger { background: rgba(220, 38, 38, .12); color: #dc2626; }
+.badge-soft-warning { background: rgba(245, 158, 11, .15); color: #d97706; }
+.badge-soft-info { background: rgba(8, 145, 178, .12); color: #0891b2; }
+.badge-soft-secondary { background: rgba(107, 117, 144, .14); color: var(--key-muted); }
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--key-primary);
+    box-shadow: 0 0 0 .2rem rgba(47, 91, 234, .15);
+}
+
+.form-label { font-weight: 600; font-size: .85rem; color: var(--key-text); }
+
+.btn-primary { background: var(--key-primary); border-color: var(--key-primary); }
+.btn-primary:hover { background: var(--key-primary-dark); border-color: var(--key-primary-dark); }
+
+.avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3b6ef6, #7c3aed);
+    color: #fff;
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.progress { border-radius: 20px; }
+
+/* دکمه شناور موبایل */
+.key-menu-toggle { display: none; }
+@media (max-width: 991.98px) {
+    .key-menu-toggle { display: inline-flex; }
+}
+
+/* اعلان‌ها */
+.notif-item { border-bottom: 1px solid var(--key-border); }
+.notif-item.unread { background: rgba(47, 91, 234, .06); }
+.notif-item:last-child { border-bottom: none; }
+
+/* مرور کارت سؤال */
+.question-card .q-text { font-size: 1rem; line-height: 1.9; }
+.option-item { border: 1px solid var(--key-border); border-radius: 10px; padding: .6rem .9rem; margin-bottom: .5rem; cursor: pointer; transition: all .15s; display: flex; gap: .6rem; align-items: center; }
+.option-item:hover { border-color: var(--key-primary); }
+.option-item.selected { border-color: var(--key-primary); background: rgba(47, 91, 234, .08); }
+.option-item.correct { border-color: var(--key-success); background: rgba(22, 163, 74, .08); }
+.option-item.wrong { border-color: var(--key-danger); background: rgba(220, 38, 38, .08); }
+
+/* چت */
+.chat-box { height: 60vh; overflow-y: auto; background: var(--key-body-bg); border-radius: 12px; padding: 1rem; }
+.chat-msg { max-width: 72%; margin-bottom: .75rem; padding: .55rem .9rem; border-radius: 14px; position: relative; font-size: .9rem; }
+.chat-msg.mine { background: var(--key-primary); color: #fff; margin-inline-start: auto; border-start-end-radius: 4px; }
+.chat-msg.theirs { background: var(--key-card-bg); border: 1px solid var(--key-border); border-start-start-radius: 4px; }
+
+/* ریخت‌شناسی متن */
+.wysiwyg-content { line-height: 2; }
+.wysiwyg-content img { max-width: 100%; border-radius: 8px; }
+
+/* پاگینیشن */
+.pagination .page-link { border-radius: 8px; margin: 0 2px; color: var(--key-text); }
+.pagination .page-item.active .page-link { background: var(--key-primary); border-color: var(--key-primary); }
+
+/* سربرگ عمومی سایت */
+.public-hero {
+    background: linear-gradient(135deg, var(--key-primary) 0%, #7c3aed 100%);
+    color: #fff;
+    border-radius: 18px;
+}
+
+.public-navbar {
+    background: var(--key-card-bg);
+    border-bottom: 1px solid var(--key-border);
+}
+
+/* گواهینامه چاپی */
+.certificate-paper {
+    background: #fff;
+    color: #1b2437;
+    border: 8px double var(--key-primary);
+    border-radius: 10px;
+    padding: 2.5rem;
+    max-width: 900px;
+}
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: #c3cadb; border-radius: 8px; }
+[data-bs-theme="dark"] ::-webkit-scrollbar-thumb { background: #2c3852; }
+
+/* چاپ */
+@media print {
+    .key-sidebar, .key-topbar, .no-print { display: none !important; }
+    .key-wrapper { margin: 0 !important; }
+    body { background: #fff !important; }
+    .card { border: none; box-shadow: none; }
+}
